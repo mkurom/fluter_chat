@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_chat/chat.dart';
+import 'package:flutter_chat/root.dart';
 
 import 'package:flutter_chat/utils/loading.dart';
 import 'infrastructure/firebaseManager.dart';
@@ -24,7 +24,7 @@ class App extends StatelessWidget {
           }
           if (snapshot.connectionState == ConnectionState.done) {
             if (FirebaseManager().signInAnonymous() != "not user") {
-              return ChatPage();
+              return RootPage();
             } else {}
           }
           return Loading();
