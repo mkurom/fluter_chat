@@ -1,18 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-// import 'package:cloud_firestore/cloud_firestore.dart';
 
-class FirebaseManager {
-  static FirebaseManager _firebaseManager;
-
-  factory FirebaseManager() {
-    if (_firebaseManager == null) {
-      _firebaseManager = new FirebaseManager._();
-    }
-    return _firebaseManager;
-  }
-
-  const FirebaseManager._();
+class FirebaseAuthDatasource {
+  String _uid = "";
 
   Future<FirebaseApp> initialize() {
     print("initialize");
@@ -26,6 +16,8 @@ class FirebaseManager {
     print("signInAnonymous");
     String errWord = "";
     var task = await FirebaseAuth.instance.signInAnonymously();
+
+    _uid = task.user.uid;
 
     print(task.user.uid);
 
