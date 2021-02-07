@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_chat/application/widgets/message_card.dart';
 import 'package:flutter_chat/application/widgets/text_form.dart';
 import 'package:flutter_chat/domain/model/message_model.dart';
+import 'package:flutter_chat/infrastructure/datasource/firebase_firestore_datasource.dart';
 
 class ChatPage extends StatefulWidget {
   @override
@@ -18,7 +19,19 @@ class _ChatPageState extends State<ChatPage> {
   }
 
   @override
+  void initState() {
+    super.initState();
+
+    fetchData();
+  }
+
+  void fetchData() async {
+    chatMessageList = await FirebaseFirestoreDatasource().fetchData();
+  }
+
+  @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: Text('チャット'),
