@@ -47,20 +47,17 @@ class ChatTextForm extends StatelessWidget {
                             icon: Icon(Icons.send),
                             color: Colors.blue,
                             onPressed: () {
-                              var today = DateTime.now();
                               FocusScope.of(context).unfocus();
                               var messageModel = MessageModel(
-                                  avatarUrl: "1",
-                                  name: "makoto",
-                                  datetime:
-                                      "${today.year}/${today.month}/${today.day} ${today.hour}:${today.minute}",
-                                  message: messageTextInputCtl.text.toString(),
-                                  isMine: false);
-                              chatMessageList.add(messageModel);
-
+                                avatarUrl: "1",
+                                name: "makoto",
+                                datetime: DateTime.now(),
+                                message: messageTextInputCtl.text.toString(),
+                                isMine: true,
+                              );
                               FirebaseFirestoreDatasource()
                                   .setData(messageModel);
-                              // updateFunction();
+                              updateFunction(messageModel);
                             },
                           ),
                         ),

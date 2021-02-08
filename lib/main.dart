@@ -27,7 +27,7 @@ class App extends StatelessWidget {
               return RootPage();
             }
           }
-          return Loading();
+          return Scaffold(body: Loading());
         },
       ),
     );

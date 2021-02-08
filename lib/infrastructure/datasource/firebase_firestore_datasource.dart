@@ -6,7 +6,7 @@ class FirebaseFirestoreDatasource {
     Map<String, dynamic> data = {
       'avatarUrl': messageData.avatarUrl,
       'name': messageData.name,
-      'datetime': messageData.datetime,
+      'datetime': messageData.datetime.toString(),
       'message': messageData.message,
       'isMine': messageData.isMine,
     };
@@ -18,6 +18,11 @@ class FirebaseFirestoreDatasource {
         .catchError(
           (error) => print("Failed to set data: $error"),
         );
+  }
+
+  Stream<QuerySnapshot> fetchSnapshot() {
+    var data = FirebaseFirestore.instance.collection("chats").snapshots();
+    return data;
   }
 
   Future<List<MessageModel>> fetchData() async {

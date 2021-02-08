@@ -25,8 +25,8 @@ class MessageCard extends StatelessWidget {
             Text(userMessage.name),
             Spacer(),
             Text(
-              userMessage.datetime,
-              style: TextStyle(fontWeight: FontWeight.w100),
+              "${userMessage.datetime.year}/${userMessage.datetime.month}/${userMessage.datetime.day} ${userMessage.datetime.hour}:${userMessage.datetime.minute}",
+              style: TextStyle(color: Colors.grey),
             ),
           ],
         ),
