@@ -22,10 +22,10 @@ class App extends StatelessWidget {
               color: Colors.white,
             );
           }
-          if (snapshot.connectionState == ConnectionState.done) {
-            if (FirebaseAuthDatasource().signInAnonymous() != "not user") {
-              return RootPage();
-            }
+          if (snapshot.connectionState == ConnectionState.done &&
+              snapshot.error == null) {
+            print("move page");
+            return RootPage();
           }
           return Scaffold(body: Loading());
         },
